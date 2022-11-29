@@ -1,5 +1,7 @@
 import video from "../data/video.js";
-
+import Views from "./Views"
+import Votes from "./Votes"
+import Comments from "./Comments.js";
 function App() {
   console.log("Here's your data:", video);
 
@@ -8,11 +10,15 @@ function App() {
       <iframe
         width="919"
         height="525"
-        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        src={video.embedUrl}
         frameBorder="0"
         allowFullScreen
-        title="Thinking in React"
+        title={video.title}
       />
+      <h1>{video.title}</h1>
+      <Views ViewsNumber={video.views} uploadDate={video.createdAt} />
+      <Votes like={video.upvotes} dislike={video.downvotes} />
+      <Comments props={video.comments} />
     </div>
   );
 }
